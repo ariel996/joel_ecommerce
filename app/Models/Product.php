@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
 // use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-    use SearchableTrait;
+    use SearchableTrait, HasFactory;
 
     protected $searchable = [
         // column with priorities
@@ -32,6 +34,11 @@ class Product extends Model
 
     public function tags() {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+    public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class);
     }
 
 

@@ -50,6 +50,29 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function() {
+    // Commandes
     Route::get('commandes', [\App\Http\Controllers\User\CommandeController::class, 'index'])->name('commandes');
     Route::delete('delete-commande/{commande_id}', [\App\Http\Controllers\User\CommandeController::class, 'destroy'])->name('supprimer_commande');
+
+    // Messages
+    Route::get('messages', [\App\Http\Controllers\User\MessageController::class, 'index'])->name('messages');
+    Route::get('ecrire_message', [\App\Http\Controllers\User\MessageController::class, 'create'])->name('ecrire_message');
+    Route::post('poster_message', [\App\Http\Controllers\User\MessageController::class, 'store'])->name('poster_message');
+    Route::get('voire_message/{id}', [\App\Http\Controllers\User\MessageController::class, 'show'])->name('voire_message');
+    Route::get('reply_message/{id}', [\App\Http\Controllers\User\MessageController::class, 'edit'])->name('reply_message');
+    Route::put('post_reply/{id}', [\App\Http\Controllers\User\MessageController::class, 'reply_message'])->name('post_reply');
+    Route::put('delete-message/{id}', [\App\Http\Controllers\User\MessageController::class, 'destroy'])->name('delete-message');
+
+    // Adresses
+    Route::get('adresses', [\App\Http\Controllers\User\AdresseController::class, 'index'])->name('adresses');
+    Route::get('ajouter-adresse', [\App\Http\Controllers\User\AdresseController::class, 'create'])->name('ajouter-adresse');
+    Route::post('stock-adresse', [\App\Http\Controllers\User\AdresseController::class, 'store'])->name('stock-adresse');
+    Route::get('modifier-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'edit'])->name('modifier-adresse');
+    Route::put('update-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'update'])->name('update-adresse');
+    Route::delete('delete-adresse', [\App\Http\Controllers\User\AdresseController::class, 'destroy'])->name('delete-adresse');
+
+    // Profil
+    Route::get('profil', [\App\Http\Controllers\User\ProfilController::class, 'profile'])->name('profile');
+    Route::get('modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'change_password'])->name('update_password');
+    Route::post('post-modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'post_change_password'])->name('post_password');
 });
