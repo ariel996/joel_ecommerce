@@ -961,7 +961,7 @@
         },
         {
             "name": "filament/filament",
-            "version": "v2.17.31",
+            "version": "v2.17.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/app.git",
@@ -1024,7 +1024,7 @@
         },
         {
             "name": "filament/forms",
-            "version": "v2.17.31",
+            "version": "v2.17.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/forms.git",
@@ -1082,7 +1082,7 @@
         },
         {
             "name": "filament/notifications",
-            "version": "v2.17.31",
+            "version": "v2.17.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/notifications.git",
@@ -1135,16 +1135,16 @@
         },
         {
             "name": "filament/support",
-            "version": "v2.17.31",
+            "version": "v2.17.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/support.git",
-                "reference": "f35da7381871cbc3a5770fdc37ff2e8e18bd711f"
+                "reference": "2e02ece5a722ddc95facd3a37f3b3a4fd3d355d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/support/zipball/f35da7381871cbc3a5770fdc37ff2e8e18bd711f",
-                "reference": "f35da7381871cbc3a5770fdc37ff2e8e18bd711f",
+                "url": "https://api.github.com/repos/filamentphp/support/zipball/2e02ece5a722ddc95facd3a37f3b3a4fd3d355d1",
+                "reference": "2e02ece5a722ddc95facd3a37f3b3a4fd3d355d1",
                 "shasum": ""
             },
             "require": {
@@ -1181,20 +1181,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2023-04-30T16:44:24+00:00"
+            "time": "2023-05-01T16:59:19+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.17.31",
+            "version": "v2.17.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/tables.git",
-                "reference": "6d8b937afaa207c9147a1364dba14799b738442c"
+                "reference": "c05ca1a1b48039c68e7a3247acb7c56ec8bee085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/tables/zipball/6d8b937afaa207c9147a1364dba14799b738442c",
-                "reference": "6d8b937afaa207c9147a1364dba14799b738442c",
+                "url": "https://api.github.com/repos/filamentphp/tables/zipball/c05ca1a1b48039c68e7a3247acb7c56ec8bee085",
+                "reference": "c05ca1a1b48039c68e7a3247acb7c56ec8bee085",
                 "shasum": ""
             },
             "require": {
@@ -1237,7 +1237,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2023-04-30T16:44:29+00:00"
+            "time": "2023-05-01T16:59:27+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2134,16 +2134,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v3.2.4",
+            "version": "v3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "c8269dcff3cda261ce113ab9548a0253d709aa91"
+                "reference": "8ebda85d59d3c414863a7f4d816ef8302faad876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/c8269dcff3cda261ce113ab9548a0253d709aa91",
-                "reference": "c8269dcff3cda261ce113ab9548a0253d709aa91",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/8ebda85d59d3c414863a7f4d816ef8302faad876",
+                "reference": "8ebda85d59d3c414863a7f4d816ef8302faad876",
                 "shasum": ""
             },
             "require": {
@@ -2196,7 +2196,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2023-04-26T18:55:47+00:00"
+            "time": "2023-05-01T19:39:51+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -8701,16 +8701,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "5.0.1",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "aae9a0a43bff37bd5d8d0311426c87bf36153f02"
+                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/aae9a0a43bff37bd5d8d0311426c87bf36153f02",
-                "reference": "aae9a0a43bff37bd5d8d0311426c87bf36153f02",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
+                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
                 "shasum": ""
             },
             "require": {
@@ -8756,7 +8756,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/5.0.1"
+                "source": "https://github.com/sebastianbergmann/diff/tree/5.0.3"
             },
             "funding": [
                 {
@@ -8764,7 +8764,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-23T05:12:41+00:00"
+            "time": "2023-05-01T07:48:21+00:00"
         },
         {
             "name": "sebastian/environment",

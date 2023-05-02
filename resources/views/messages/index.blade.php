@@ -50,7 +50,7 @@
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $mms->expediteur->name }}</td>
-                                            <td>{{ $mms->contenue }}</td>
+                                            <td>{!! $mms->contenue !!}</td>
                                             <td>{{ $mms->objet }}</td>
                                             <td>{{ $mms->date }}</td>
                                             <td>
@@ -65,11 +65,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('reply_message', $mms->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                <a href="{{ route('reply_message', $mms->id) }}" class="btn btn-primary">
                                                     {{ __('Répondre') }}
                                                 </a>
 
-                                                <a href="{{ route('voire_message', $mms->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                <a href="{{ route('voire_message', $mms->id) }}" class="btn btn-info">
                                                     {{ __('Voir') }}
                                                 </a>
                                                 <a href="" class="btn btn-danger" onclick="event.preventDefault();
@@ -113,7 +113,7 @@
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $message->expediteur->name }}</td>
-                                            <td>{{ $message->contenue }}</td>
+                                            <td>{!! $message->contenue !!}</td>
                                             <td>{{ $message->objet }}</td>
                                             <td>{{ $message->date }}</td>
                                             <td>
@@ -128,7 +128,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('voire_message', $message->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                <a href="{{ route('voire_message', $message->id) }}" class="btn btn-info">
                                                     {{ __('Voir') }}
                                                 </a>
                                                 <a href="" class="btn btn-danger" onclick="event.preventDefault();

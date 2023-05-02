@@ -31,6 +31,7 @@ class ProductResource extends Resource
                     ->relationship('category', 'name')
                     ->required(),
                 Forms\Components\Select::make('supplier_id')
+                ->label('Fourniseseurs')
                     ->relationship('supplier', 'nom'),
                 TitleWithSlugInput::make(
                     fieldTitle: 'name', // The name of the field in your model that stores the title.
@@ -39,17 +40,21 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('details')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('price')
+                ->label('Prix unitaire')
                     ->required(),
                 Forms\Components\FileUpload::make('image')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(),
                 Forms\Components\FileUpload::make('images')
+                ->label('Gallerie')
                     ->required(),
                 Forms\Components\Toggle::make('featured')
+                ->label('Favorite ?')
                     ->required(),
                 Forms\Components\TextInput::make('quantity')
+                ->label('Quantité')
                     ->required(),
                 Forms\Components\RichEditor::make('description')
+                ->label('Description')
                     ->required()
                     ->maxLength(65535),
             ]);
