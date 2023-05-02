@@ -35,7 +35,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Destinataire</label>
-                                    <select class="form-control select2" style="width: 100%;">
+                                    <select class="form-control select2" name=destinataire_id style="width: 100%;">
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach

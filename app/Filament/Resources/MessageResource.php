@@ -26,13 +26,13 @@ class MessageResource extends Resource
             ->schema([
                 Forms\Components\Select::make('expediteur_id')
                     ->label('Expéditeur')
-                    ->relationship('user', 'name')
+                    ->relationship('expediteur', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('destinataire_id')
+                Forms\Components\Select::make('destinataire_id')
                     ->label('Destinataire')
-                    ->relationship('user', 'name')
+                    ->relationship('destinataire', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('contenue')
+                Forms\Components\RichEditor::make('contenue')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('objet')
