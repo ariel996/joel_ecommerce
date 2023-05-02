@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\User;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class MessageController extends Controller
             'heure' => Carbon::now()->toTimeString(),
             'status' => 0
         ]);
-        session()->flash('session', __('Message successfully deleted'));
+        Toastr::success('message', 'Message envoyée avec succès !!!');
         return back();
     }
 
@@ -102,7 +103,7 @@ class MessageController extends Controller
             $message->date = Carbon::now()->toDateString();
             $message->status = 0;
             $message->save();
-            session()->flash('session', __('Message successfully updated'));
+            Toastr::success('message', 'Message repondu avec succès !!!');
             return back();
         } catch (\Exception $exception) {
             return back()->withInput()->withErrors(['unexpected_error' => __('messages.unexpected_error')]);
@@ -132,7 +133,7 @@ class MessageController extends Controller
         try {
             $message = Message::findOrFail($id);
             $message->delete();
-            session()->flash('session', __('Message successfully deleted'));
+            Toastr::success('message', 'Message supprimée avec succès !!!');
             return back();
         } catch (\Exception $exception) {
             return back()->withInput()->withErrors(['unexpected_error' => __('messages.unexpected_error')]);

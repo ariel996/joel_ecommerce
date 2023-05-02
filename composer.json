@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "brian2694/laravel-toastr": "^5.57",
         "camya/filament-title-with-slug": "^0.5.6",
         "cartalyst/stripe-laravel": "^15.0",
         "filament/filament": "^2.0",
@@ -30,6 +31,9 @@
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
+        "files": [
+            "app/library/helper.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",

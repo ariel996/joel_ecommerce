@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Adresse;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,7 @@ class AdresseController extends Controller
             'pays' => $request->input('pays'),
             'user_id' => Auth::user()->id,
         ]);
+        Toastr::success('message', 'Adresse ajoutée avec succès !!!');
         return back();
     }
 
@@ -46,12 +48,16 @@ class AdresseController extends Controller
         $adresse->ville = $request->input('ville');
         $adresse->pays = $request->input('pays');
         $adresse->save();
+        Toastr::info('message', 'Adresse modifiée avec succès !!!');
+
         return back();
     }
 
     public function destroy($id)
     {
         Adresse::query()->findOrFail($id)->delete();
+        Toastr::success('message', 'Adresse supprimée avec succès !!!');
+
         return back();
     }
 }
