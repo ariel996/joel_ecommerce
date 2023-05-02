@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('update-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'update'])->name('update-adresse');
     Route::delete('delete-adresse', [\App\Http\Controllers\User\AdresseController::class, 'destroy'])->name('delete-adresse');
 
-    // Profil
+    // Profile
     Route::get('profil', [\App\Http\Controllers\User\ProfilController::class, 'profile'])->name('profile');
     Route::get('modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'change_password'])->name('update_password');
     Route::post('post-modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'post_change_password'])->name('post_password');
