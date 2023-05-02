@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class LivraisonResource extends Resource
 {
     protected static ?string $model = Livraison::class;
+    protected static ?string $label = 'Livraisons';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -24,7 +25,7 @@ class LivraisonResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('order_id')
-                    ->relationship('order', 'id')
+                    ->relationship('order', 'billing_name')
                     ->required(),
                 Forms\Components\Toggle::make('etat_commande')
                     ->required(),
@@ -53,14 +54,14 @@ class LivraisonResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -68,5 +69,5 @@ class LivraisonResource extends Resource
             'create' => Pages\CreateLivraison::route('/create'),
             'edit' => Pages\EditLivraison::route('/{record}/edit'),
         ];
-    }    
+    }
 }

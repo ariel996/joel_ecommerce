@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
+    protected static ?string $label = 'Commandes';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -23,7 +24,10 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id'),
+                Forms\Components\Select::make('user_id')
+                    ->label('Utilisateurs')
+                    ->relationship('user', 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('billing_email')
                     ->email()
                     ->required()

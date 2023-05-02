@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MessageResource extends Resource
 {
     protected static ?string $model = Message::class;
+    protected static ?string $label = 'Messages';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 

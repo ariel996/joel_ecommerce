@@ -17,13 +17,14 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    protected static ?string $label = 'Utilisateurs';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('role_id'),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
