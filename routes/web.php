@@ -60,8 +60,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('poster_message', [\App\Http\Controllers\User\MessageController::class, 'store'])->name('poster_message');
     Route::get('voire_message/{id}', [\App\Http\Controllers\User\MessageController::class, 'show'])->name('voire_message');
     Route::get('reply_message/{id}', [\App\Http\Controllers\User\MessageController::class, 'edit'])->name('reply_message');
-    Route::put('post_reply/{id}', [\App\Http\Controllers\User\MessageController::class, 'reply_message'])->name('post_reply');
-    Route::put('delete-message/{id}', [\App\Http\Controllers\User\MessageController::class, 'destroy'])->name('delete-message');
+    Route::post('post_reply/{id}', [\App\Http\Controllers\User\MessageController::class, 'reply_message'])->name('post_reply');
+    Route::delete('delete-message/{id}', [\App\Http\Controllers\User\MessageController::class, 'destroy'])->name('delete-message');
 
     // Adresses
     Route::get('adresses', [\App\Http\Controllers\User\AdresseController::class, 'index'])->name('adresses');
