@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,15 +40,10 @@ Route::delete('/coupon/', [\App\Http\Controllers\CouponsController::class, 'dest
 
 // auth routes
 Auth::routes();
-Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('/login/{provider}', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
+Route::get('/login/{provider}/callback', [\App\Http\Controllers\Auth\LoginController::class,'handleProviderCallback']);
 
 //Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['prefix' => 'admin'], function () {
-    //Voyager::routes();
-    Route::get('/country_visits', 'VisitsController@index')->name('voyager.visits');
-});
 
 Route::group(['middleware' => 'auth'], function() {
     // Commandes
