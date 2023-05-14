@@ -39,6 +39,7 @@
     </div>
     <!-- <hr> -->
 </div>
+@include('partials.avis')
 @include('partials.might-like')
 <!-- end page content -->
 

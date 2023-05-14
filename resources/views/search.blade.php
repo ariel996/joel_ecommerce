@@ -25,7 +25,7 @@
                         <th><a href="{{ route('shop.show', $product->slug) }}" class="text-decoration-none">{{ $product->name }}</a></th>
                         <td>{{ $product->price }} €</td>
                         <td>{{ $product->details }}</td>
-                        <td>{{ str_limit($product->description, 70) }}</td>
+                        <td>{{ Str::substr($product->description,0, 70) }}</td>
                         <td><img src="{{ asset('storage/'.$product->image) }}" width="70" height="70"></td>
                     </tr>
                 @endforeach

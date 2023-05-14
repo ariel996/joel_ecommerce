@@ -49,4 +49,9 @@ class Product extends Model
         ];
         return array_merge($array, $extraFields);
     }
+
+    public function avis(): HasMany
+    {
+        return $this->hasMany(Avis::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvisController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,8 @@ Route::get('/login/{provider}/callback', [\App\Http\Controllers\Auth\LoginContro
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
+    //Avis
+    Route::post('post_avis', [AvisController::class, 'store'])->name('post_avis');
     // Commandes
     Route::get('commandes', [\App\Http\Controllers\User\CommandeController::class, 'index'])->name('commandes');
     Route::delete('delete-commande/{commande_id}', [\App\Http\Controllers\User\CommandeController::class, 'destroy'])->name('supprimer_commande');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\library;
+
 function productImage($path) {
     /*
     TODO reomve this in production, this is just for heroku demo app to work.
