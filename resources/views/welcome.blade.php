@@ -10,7 +10,7 @@
               Bienvenue sur notre galerie d'art africain
             </h3>
             <p>Art africain de collection - découvrez notre galerie d'art africain</p>
-            <button class="btn custom-border my-2 my-sm-0">Shop</button>
+            <button class="btn custom-border my-2 my-sm-0">Commander</button>
             <button class="btn custom-border my-2 my-sm-0">Nous contacter</button>
         </div>
     </div>
@@ -19,7 +19,7 @@
 <!-- start page content -->
 <div class="container">
     <div class="content-head">
-        <h2 style="text-align:center; font-weight: bold">GALERIE D'ARTs AFRICAINS</h2>
+        <h2 style="text-align:center; font-weight: bold">GALERIE D'ARTS AFRICAINS</h2>
         <p style="text-align: center">Bienvenue sur la galerie d'art africain, où vous pourrez découvrir des œuvres uniques et fascinantes de certains des artistes les plus talentueux d'Afrique.</h2>
     </div>
     <h2 class="header text-center">Produits vedettes</h2>
