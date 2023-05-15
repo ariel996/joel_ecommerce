@@ -47,11 +47,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Type</label>
-                                    <input type="text" class="form-control" name="type" required>
-                                </div>
-
-                                <div class="form-group">
                                     <label>Contenue</label>
                                     <textarea type="text" class="form-control" name="contenue" required></textarea>
                                 </div>

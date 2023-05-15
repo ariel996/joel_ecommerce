@@ -46,11 +46,9 @@ class MessageController extends Controller
         Message::create([
             'expediteur_id' => Auth::user()->id,
             'destinataire_id' => $request->input('destinataire_id'),
-            'type' => $request->input('type'),
             'objet' => $request->input('objet'),
             'contenue' => $request->input('contenue'),
             'date' => Carbon::now()->toDateString(),
-            'heure' => Carbon::now()->toTimeString(),
             'status' => 0
         ]);
         Toastr::success('message', 'Message envoyée avec succès !!!');
@@ -98,8 +96,6 @@ class MessageController extends Controller
             $message->destinataire_id = $request->input('destinataire_id');
             $message->contenue = $request->input('contenue');
             $message->objet = $message->objet;
-            $message->type = $message->type;
-            $message->heure = Carbon::now()->toTimeString();
             $message->date = Carbon::now()->toDateString();
             $message->status = 0;
             $message->save();
