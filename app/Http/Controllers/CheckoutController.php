@@ -63,7 +63,7 @@ class CheckoutController extends Controller
 
             // SUCCESSFUL
             $this->decreaseQuantities();
-            Mail::to('me@me.com')->send(new OrderPlaced($order));
+            Mail::to($order->user->email)->send(new OrderPlaced($order));
             Cart::instance('default')->destroy();
             session()->forget('coupon');
             return redirect()->route('welcome')->with('success', 'Your order is completed successfully!');
