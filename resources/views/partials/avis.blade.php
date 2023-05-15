@@ -16,6 +16,7 @@
             <div class="col-md-6">
                 <form action="{{ route('post_avis') }}" method="post">
                     @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <div class="form-group">
                         <textarea class="form-control" name="commentaire" required  cols="3" rows="2"></textarea>
                     </div>

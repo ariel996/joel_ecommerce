@@ -28,7 +28,7 @@ class CartController extends Controller
         } else if($duplicatesLater->isNotEmpty()) {
             Cart::instance('saveForLater')->remove($duplicatesLater->first()->rowId);
         }
-        Cart::instance('default')->add(request()->id, request()->name, 1, request()->price)->associate('App\Product');
+        Cart::instance('default')->add(request()->id, request()->name, 1, request()->price)->associate('App\Models\Product');
         session()->flash('success', 'product added to the cart');
         return redirect()->route('cart.index');
     }
@@ -65,7 +65,7 @@ class CartController extends Controller
             session()->flash('success', 'Item is already saved for later');
             return redirect()->route('cart.index');
         }
-        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)->associate('App\Product');
+        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
         session()->flash('success', 'Item has been saved for later');
         return redirect()->route('cart.index');
     }
@@ -81,7 +81,7 @@ class CartController extends Controller
             session()->flash('success', 'Item is already in the cart');
             return redirect()->route('cart.index');
         }
-        Cart::instance('default')->add($item->id, $item->name, 1, $item->price)->associate('App\Product');
+        Cart::instance('default')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
         session()->flash('success', 'item added to the cart');
         return redirect()->route('cart.index');
     }
