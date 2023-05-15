@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CheckoutRequest;
 use Cart;
-use App\Order;
-use App\OrderProduct;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Cartalyst\Stripe\Stripe;
 use Mail;
 use App\Mail\OrderPlaced;
-use App\Product;
+use App\Models\Product;
 
 class CheckoutController extends Controller
 {
