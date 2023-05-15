@@ -24,7 +24,7 @@ class ShopController extends Controller
             $tagName = $tag->name;
         } else {
             $products = Product::where('featured', true);
-            $categoryName = 'Featured';
+            $categoryName = 'À la une';
         }
         if(request()->sort == 'low_high') {
             $products = $products->orderBy('price')->paginate($pagination);
@@ -60,18 +60,19 @@ class ShopController extends Controller
     }
 
     public function search($query) {
-        if(strlen($query) < 3) return back()->with('error', 'minimum query length is 3');
-        $products = Product::search($query)->paginate(10);
+        if(strlen($query) < 3) return back()->with('error', 'minimum  3 caractères');
+        $products = Product::where('name', 'LIKE', "%$query%")->orWhere('description', 'LIKE', "%$query%")
+        -> paginate(10);
         return view('search')->with(['products' => $products, 'query' => $query]);
     }
 
     protected function getStockLevel($quantity) {
         if($quantity > 0) {
-            return 'In Stock';
+            return 'Disponible';
         } else if($quantity <=0 && $quantity > 0) {
-            return 'Low Stock';
+            return 'vendu';
         } else {
-            return 'Out Of Stock';
+            return 'vendu';
         }
     }
 

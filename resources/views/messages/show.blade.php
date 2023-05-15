@@ -12,7 +12,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('messages') }}">Messages</a></li>
-                            <li class="breadcrumb-item active">Voire message</li>
+                            <li class="breadcrumb-item active">Voir message</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

@@ -23,7 +23,7 @@
                 </li>
             </ul>
             <div>
-                <input id="search" name="recherche" style="width:400px; margin:0;" id="search" class="form-control custom-border" placeholder="Search" aria-label="Search">
+                <input id="search" name="recherche" style="width:400px; margin:0;" id="search" class="form-control custom-border" placeholder="Recherche" aria-label="Search">
             </div>
         </div>
 
@@ -83,7 +83,7 @@
             if (searcher.val().length > 2) {
                 location.href = '/shop/search/' + searcher.val();
             } else {
-                alert('Minimun query length is 3');
+                alert('minimum 3 caracteres');
             }
         }
     });
