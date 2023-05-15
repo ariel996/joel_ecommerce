@@ -62,7 +62,7 @@
                                         <td>
                                             <a href="" class="btn btn-danger" onclick="event.preventDefault();
                                 document.getElementById('del-commande-{{ $commande->id }}').submit();">Supprimer</a>
-                                            <form id="del-commande-{{$commande->id}}" style="display:none;" action="{{ route('delete-commande', $commande->id) }}" method="post">
+                                            <form id="del-commande-{{$commande->id}}" style="display:none;" action="{{ route('supprimer_commande', $commande->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
