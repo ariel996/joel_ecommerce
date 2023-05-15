@@ -6,7 +6,7 @@
     <h2 class="lead" style="margin:1em; margin-left:0;">Showing {{ $products->count() }} results for {{ $query }} out of {{ $products->total() }}</h2>
     @if ($products->total() == 0)
         <div class="alert alert-primary">
-        Aucun produit n'a été trouvé pour votre recherche
+        Aucun produit trouvé
         </div>
     @else
         <table class="table table-bordered">

@@ -19,7 +19,7 @@
 <!-- start page content -->
 <div class="container">
     <div class="content-head">
-        <h2 style="text-align:center; font-weight: bold">GALERIE D'ART AFRICAN</h2>
+        <h2 style="text-align:center; font-weight: bold">GALERIE D'ARTs AFRICAINS</h2>
         <p style="text-align: center">Bienvenue sur la galerie d'art africain, où vous pourrez découvrir des œuvres uniques et fascinantes de certains des artistes les plus talentueux d'Afrique.</h2>
     </div>
     <h2 class="header text-center">Produits vedettes</h2>
