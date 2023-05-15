@@ -6,7 +6,7 @@
             <ul class="list-group">
                 @foreach ($avis as $av)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ $av->commentaire }} <i>{{ $av->created_date->diffForHumans() }}</i>
+                        {{ $av->commentaire }} <i>{{ $av->created_at->diffForHumans() }}</i>
                     </li>
                 @endforeach
             </ul>
