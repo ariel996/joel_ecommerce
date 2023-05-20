@@ -42,8 +42,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Objet</label>
-                                    <input type="text" class="form-control" name="objet" required>
+                                    <label for="objet">Objet</label>
+                                    <select name="objet" id="objet" class="form-group" required>
+                                        @foreach ($orders as $order)
+                                            <option value="{{ $order->ref_id }}">{{ $order->ref_id }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
