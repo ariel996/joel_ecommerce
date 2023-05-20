@@ -11,6 +11,7 @@ use Cartalyst\Stripe\Stripe;
 use Mail;
 use App\Mail\OrderPlaced;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -98,6 +99,7 @@ class CheckoutController extends Controller
     {
         $order = Order::create([
             'user_id' => auth()->user() ? auth()->user()->id : null,
+            'ref_id' => Str::random(6),
             'billing_email' => $request->email,
             'billing_name' => $request->name,
             'billing_address' => $request->address,

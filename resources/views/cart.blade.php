@@ -63,8 +63,8 @@
                     </div>
                     <div class="col-md-3 offset-md-1">
                         <!-- <p class="text-right light-text">Subtotal &nbsp; &nbsp;${{ Cart::subtotal() }}</p> -->
-                        <p class="text-right light-text">Tax(21%) &nbsp; &nbsp; ${{ Cart::tax() }}</p>
-                        <p class="text-right">Total &nbsp; &nbsp; ${{ Cart::total()}}</p>
+                        <p class="text-right light-text">Tax(21%) &nbsp; &nbsp; {{ Cart::tax() }} €</p>
+                        <p class="text-right">Total &nbsp; &nbsp; {{ Cart::total()}} €</p>
                     </div>
                 </div>
             </div>

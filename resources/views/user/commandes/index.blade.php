@@ -34,8 +34,9 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
+                                        <th>Client</th>
+                                        <th>Référence</th>
                                         <th>Adresse</th>
-                                        <th>Tax</th>
                                         <th>Total</th>
                                         <th>Etat</th>
                                         <th style="width: 40px">Actions</th>
@@ -45,9 +46,10 @@
                                     @foreach($commandes as $key => $commande)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
+                                        <td>{{ $commande->billing_email }}</td>
+                                        <td>{{ $commande->ref_id }}</td>
                                         <td>{{ $commande->billing_address }}</td>
-                                        <td>{{ $commande->billing_tax }}</td>
-                                        <td>{{ $commande->billing_total }}</td>
+                                        <td>{{ $commande->billing_total }}€</td>
                                         <td>
                                             @if($commande->shipped == 0)
                                             <span class="badge bg-warning">

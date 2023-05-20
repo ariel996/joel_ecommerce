@@ -76,27 +76,23 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('billing_email'),
+                Tables\Columns\TextColumn::make('user.name')->label('Clients'),
+                //Tables\Columns\TextColumn::make('billing_email'),
                 Tables\Columns\TextColumn::make('billing_name'),
                 Tables\Columns\TextColumn::make('billing_address'),
-                Tables\Columns\TextColumn::make('billing_city'),
+                /*Tables\Columns\TextColumn::make('billing_city'),
                 Tables\Columns\TextColumn::make('billing_province'),
                 Tables\Columns\TextColumn::make('billing_postalcode'),
                 Tables\Columns\TextColumn::make('billing_phone'),
                 Tables\Columns\TextColumn::make('billing_name_on_card'),
                 Tables\Columns\TextColumn::make('billing_discount'),
-                Tables\Columns\TextColumn::make('billing_discount_code'),
+                Tables\Columns\TextColumn::make('billing_discount_code'),*/
                 Tables\Columns\TextColumn::make('billing_subtotal'),
-                Tables\Columns\TextColumn::make('billing_tax'),
+                //Tables\Columns\TextColumn::make('billing_tax'),
                 Tables\Columns\TextColumn::make('billing_total'),
-                Tables\Columns\TextColumn::make('payment_gateway'),
-                Tables\Columns\IconColumn::make('shipped')
+                //Tables\Columns\TextColumn::make('payment_gateway'),
+                Tables\Columns\IconColumn::make('shipped')->label('Etat livraison')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
             ])
             ->filters([
                 //

@@ -81,7 +81,7 @@
                                 <a href="{{ route('shop.show', $item->model->slug) }}" class="text-decoration-none">
                                     <h3 class="lead light-text">{{ $item->model->name }}</h3>
                                     <p class="light-text">{{ $item->model->details }}</p>
-                                    <h3 class="light-text lead text-small">${{ $item->model->price }}</h3>
+                                    <h3 class="light-text lead text-small">{{ $item->model->price }} €</h3>
                                 </a>
                             </td>
                             <td>
