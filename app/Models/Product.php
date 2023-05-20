@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Nicolaslopezj\Searchable\SearchableTrait;
 // use Laravel\Scout\Searchable;
 
@@ -53,5 +54,10 @@ class Product extends Model
     public function avis(): HasMany
     {
         return $this->hasMany(Avis::class);
+    }
+
+    public function saleExpositions(): belongsTo
+    {
+        return $this->belongsTo(SalleExposition::class);
     }
 }

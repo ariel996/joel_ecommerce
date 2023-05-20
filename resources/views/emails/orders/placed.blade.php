@@ -1,7 +1,8 @@
 @component('mail::message')
-votre commande a été énvoyer avec success!
+votre commande a été énvoyée avec success!
 
 <h3>commande: </h3>
+<li>Référence : {{ $order->ref_id }}</li>
 <li>email : {{ $order->billing_email }}</li>
 <li>nom : {{ $order->billing_name }}</li>
 <li>Total : {{ $order->billing_total }} €</li>
