@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -31,8 +32,9 @@ class MessageController extends Controller
      */
     public function create()
     {
+        $orders = Order::query()->where('shipped', '!=', 0)->get();
         $users = User::query()->where('id','!=', Auth::user()->id)->get();
-        return view('messages.create', compact('users'));
+        return view('messages.create', compact('users', 'orders'));
     }
 
     /**
@@ -85,7 +87,9 @@ class MessageController extends Controller
         $message = Message::findOrFail($id);
         $message->status = 1;
         $message->save();
-        return view('messages.reply', compact('message'));
+        $orders = Order::query()->where('shipped', '!=', 0)->get();
+
+        return view('messages.reply', compact('message', 'orders'));
     }
 
     public function reply_message(Request $request, $id)
@@ -95,7 +99,6 @@ class MessageController extends Controller
             $message->expediteur_id = Auth::user()->id;
             $message->destinataire_id = $request->input('destinataire_id');
             $message->contenue = $request->input('contenue');
-            $message->objet = $message->objet;
             $message->date = Carbon::now()->toDateString();
             $message->status = 0;
             $message->save();

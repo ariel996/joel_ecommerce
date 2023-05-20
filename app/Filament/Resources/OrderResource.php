@@ -77,7 +77,7 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('Clients'),
-                //Tables\Columns\TextColumn::make('billing_email'),
+                Tables\Columns\TextColumn::make('ref_id')->label('Référence'),
                 Tables\Columns\TextColumn::make('billing_name'),
                 Tables\Columns\TextColumn::make('billing_address'),
                 /*Tables\Columns\TextColumn::make('billing_city'),
