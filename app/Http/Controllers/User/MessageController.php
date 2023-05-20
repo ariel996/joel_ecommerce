@@ -99,7 +99,6 @@ class MessageController extends Controller
             $message->expediteur_id = Auth::user()->id;
             $message->destinataire_id = $request->input('destinataire_id');
             $message->contenue = $request->input('contenue');
-            $message->objet = $message->objet;
             $message->date = Carbon::now()->toDateString();
             $message->status = 0;
             $message->save();
