@@ -95,9 +95,10 @@ class MessageController extends Controller
     public function reply_message(Request $request, $id)
     {
         try {
-            $message = Message::findOrFail($id);
+            $sms = Message::findOrFail($id);
+            $message = new Message();
             $message->expediteur_id = Auth::user()->id;
-            $message->destinataire_id = $request->input('destinataire_id');
+            $message->destinataire_id = $sms->expediteur_id;
             $message->contenue = $request->input('contenue');
             $message->date = Carbon::now()->toDateString();
             $message->status = 0;

@@ -24,6 +24,7 @@
             <h2 class="lead" style="margin-top:1em">{{ $product->name }}</h2>
             <span class="badge badge-success" style="font-size: 1em">{{ $stockLevel }}</span>
             <p class="light-text">{{ $product->details }}</p>
+            <p class="light-text">Salle exposition: {{ $product->exposition?->nom }} Date exposition: {{ $product->date_heure_exposition }} </p>
             <h3 class="lead">{{ $product->price}} €</h3>
             <p class="light-text">{!! $product->description !!}</p>
             @if ($product->quantity > 0)

@@ -56,8 +56,8 @@ class Product extends Model
         return $this->hasMany(Avis::class);
     }
 
-    public function saleExpositions(): belongsTo
+    public function exposition(): BelongsTo
     {
-        return $this->belongsTo(SalleExposition::class);
+        return $this->belongsTo(Exposition::class);
     }
 }
