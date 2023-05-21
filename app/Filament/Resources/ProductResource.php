@@ -30,6 +30,13 @@ class ProductResource extends Resource
                     ->label('Catégories')
                     ->relationship('category', 'name')
                     ->required(),
+                    Forms\Components\Select::make('exposition_id')
+                    ->label('Salle exposition')
+                    ->relationship('exposition', 'nom')
+                    ->required(),
+                    Forms\Components\DateTimePicker::make('date_heure_exposition')
+                    ->required()
+                    ->label('Date et heure exposition'),
                 Forms\Components\Select::make('supplier_id')
                 ->label('Fourniseseurs')
                     ->relationship('supplier', 'nom'),
