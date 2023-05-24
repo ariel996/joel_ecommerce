@@ -27,7 +27,7 @@
     <div class="row">
         @foreach ($products as $product)
             <!-- start single product -->
-            <div class="col-md-6 col-sm-12 col-lg-4 product">
+            <div class="col-md-4 col-sm-4 col-lg-4 product">
                 <a href="{{ route('shop.show', $product->slug) }}" class="custom-card">
                     <div class="card view overlay zoom">
                         <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top img-fluid" alt="...">
@@ -57,7 +57,7 @@
     <div class="row">
         @foreach ($hotProducts as $product)
             <!-- start single product -->
-            <div class="col-md-6 col-sm-12 col-lg-4 product">
+            <div class="col-md-4 col-sm-4 col-lg-4 product">
                 <a href="{{ route('shop.show', $product->slug) }}" class="custom-card">
                     <div class="card view overlay zoom">
                         <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top img-fluid" alt="...">

@@ -32,8 +32,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $orders = Order::query()->where('shipped', '!=', 0)->get();
-        $users = User::query()->where('id','!=', Auth::user()->id)->get();
+        $orders = Order::query()->where('user_id', '=', Auth::user()->id)->get();
+        $users = User::query()->where('role_id','=', 1)->get();
         return view('messages.create', compact('users', 'orders'));
     }
 

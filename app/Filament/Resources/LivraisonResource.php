@@ -12,6 +12,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\Filter;
+
 
 class LivraisonResource extends Resource
 {
@@ -36,8 +38,8 @@ class LivraisonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('order.id'),
-                Tables\Columns\IconColumn::make('etat_commande')
+                Tables\Columns\TextColumn::make('order.ref_id'),
+                Tables\Columns\IconColumn::make('etat_commande')->label('Livré')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
@@ -45,7 +47,8 @@ class LivraisonResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
+                Filter::make('etat_commande')->label('Livré')
+    ->query(fn (Builder $query): Builder => $query->where('etat_commande', true))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

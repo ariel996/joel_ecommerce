@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\Filter;
 
 class OrderResource extends Resource
 {
@@ -68,6 +69,7 @@ class OrderResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Toggle::make('shipped')
+                ->label('Livré')
                     ->required(),
             ]);
     }
@@ -95,7 +97,10 @@ class OrderResource extends Resource
                     ->boolean(),
             ])
             ->filters([
-                //
+                Filter::make('shipped')->label('Livré')
+                ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 1)),
+                Filter::make('shipped2')->label('Non Livré')
+                ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 0)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
