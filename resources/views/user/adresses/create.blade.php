@@ -34,7 +34,7 @@
                                 <form action="{{ route('stock-adresse') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Destinataire</label>
+                                        <label>Rue</label>
                                         <input type="text" class="form-control" name="rue" required>
                                     </div>
                                     <div class="form-group">
