@@ -9,7 +9,7 @@
             <!-- start filter section -->
             <div class="col-md-2" style="margin-top:1em">
                 <h4 class="filter-header">
-                Par Catégorie
+                Par catégorie
                 </h4>
                 <ul class="filter-ul">
                     @foreach ($categories as $category)

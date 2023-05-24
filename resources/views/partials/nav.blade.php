@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            GALERIE D'ARTS AFRICAINS
+            {{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                 </li>
             </ul>
             <div>
-                <input id="search" name="recherche" style="width:400px; margin:0;" id="search" class="form-control custom-border" placeholder="Recherche" aria-label="Search">
+                <input id="search" name="recherche" style="width:400px; margin:0;" id="search" class="form-control custom-border" placeholder="Search" aria-label="Search">
             </div>
         </div>
 
@@ -32,11 +32,11 @@
             <!-- Authentication Links -->
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('connexion') }}</a>
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('creer un compte') }}</a>
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
             </li>
             @endif
             @else
@@ -83,7 +83,7 @@
             if (searcher.val().length > 2) {
                 location.href = '/shop/search/' + searcher.val();
             } else {
-                alert('minimum 3 caracteres');
+                alert('Minimun query length is 3');
             }
         }
     });

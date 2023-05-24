@@ -121,7 +121,7 @@
                 </table>
             @else
                 <div class="alert alert-primary" style="margin:2em">
-                    <li>Pas d'articles enregistrés pour plus tard</li>
+                    <li>Pas d'éléments enregistrés pour plus tard</li>
                 </div>
             @endif
         </div>

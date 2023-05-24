@@ -37,7 +37,7 @@ Route::get('/guest-checkout', [\App\Http\Controllers\CheckoutController::class, 
 
 // coupon
 Route::post('/coupon', [\App\Http\Controllers\CouponsController::class, 'store'])->name('coupon.store');
-Route::delete('/coupon', [\App\Http\Controllers\CouponsController::class, 'destroy'])->name('coupon.destroy');
+Route::delete('/coupon/', [\App\Http\Controllers\CouponsController::class, 'destroy'])->name('coupon.destroy');
 
 // auth routes
 Auth::routes();
@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('post_avis', [AvisController::class, 'store'])->name('post_avis');
     // Commandes
     Route::get('commandes', [\App\Http\Controllers\User\CommandeController::class, 'index'])->name('commandes');
+    Route::get('voir_commande/{id}', [\App\Http\Controllers\User\CommandeController::class, 'show'])->name('voir_commande');
     Route::delete('delete-commande/{commande_id}', [\App\Http\Controllers\User\CommandeController::class, 'destroy'])->name('supprimer_commande');
 
     // Messages

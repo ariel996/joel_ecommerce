@@ -23,13 +23,13 @@ class CartController extends Controller
             return $cartItem->id == request()->id;
         });
         if($duplicates->isNotEmpty()) {
-            session()->flash('success', " l'article est déja dans le panier");
+            session()->flash('success', 'Item is already in your cart');
             return redirect()->route('cart.index');
         } else if($duplicatesLater->isNotEmpty()) {
             Cart::instance('saveForLater')->remove($duplicatesLater->first()->rowId);
         }
         Cart::instance('default')->add(request()->id, request()->name, 1, request()->price)->associate('App\Models\Product');
-        session()->flash('success', 'le produit a été ajouté au panier');
+        session()->flash('success', 'product added to the cart');
         return redirect()->route('cart.index');
     }
 
@@ -38,7 +38,7 @@ class CartController extends Controller
         // dd(request()->all());
         if(request()->productQuantity >= request()->quantity) {
             Cart::instance('default')->update($id, request()->quantity);
-            session()->flash('success', 'quantité mise à jour!');
+            session()->flash('success', 'quantity updated successfully!');
             return response()->json(['success' => ''], 200);
         }
         session()->flash('error', 'not enough products');
@@ -50,7 +50,7 @@ class CartController extends Controller
         Cart::instance('default')->remove($id);
         else if($cart = 'saveForLater')
         Cart::instance('saveForLater')->remove($id);
-        session()->flash('success', "l'article a été supprimé");
+        session()->flash('success', 'item has been removed');
         return back();
     }
 
@@ -62,11 +62,11 @@ class CartController extends Controller
             return $rowId == $id;
         });
         if($duplicates->isNotEmpty()) {
-            session()->flash('success', "L'article est déjà sauvegardé pour plus tard");
+            session()->flash('success', 'Item is already saved for later');
             return redirect()->route('cart.index');
         }
         Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
-        session()->flash('success', "L'article a été enregistré pour plus tard");
+        session()->flash('success', 'Item has been saved for later');
         return redirect()->route('cart.index');
     }
 
@@ -78,11 +78,11 @@ class CartController extends Controller
             return $cartItem->id == $item->id;
         });
         if($exist->isNotEmpty()) {
-            session()->flash('success', "L'article se trouve déjà dans le panier");
+            session()->flash('success', 'Item is already in the cart');
             return redirect()->route('cart.index');
         }
         Cart::instance('default')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
-        session()->flash('success', "L'article se trouve déjà dans le panier");
+        session()->flash('success', 'item added to the cart');
         return redirect()->route('cart.index');
     }
 
