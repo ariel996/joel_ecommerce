@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="objet">Objet</label>
-                                    <select name="objet" id="objet" class="form-group" required>
+                                    <select name="objet" id="objet" class="form-control" required>
                                         @foreach ($orders as $order)
                                             <option value="{{ $order->ref_id }}">{{ $order->ref_id }}</option>
                                         @endforeach
