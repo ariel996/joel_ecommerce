@@ -33,6 +33,9 @@ class OrderResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\TextInput::make('ref_id')
+                    ->label('Référence commande')
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('billing_name')
                     ->required()
                     ->maxLength(255),
