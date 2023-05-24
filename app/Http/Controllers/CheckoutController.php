@@ -68,7 +68,7 @@ class CheckoutController extends Controller
             Cart::instance('default')->destroy();
             session()->forget('coupon');
             return redirect()->route('welcome')->with('success', 'Your order is completed successfully!');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->insertIntoOrdersTable($request, $e->getMessage());
             return back()->withError('Error ' . $e->getMessage());
         }

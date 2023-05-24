@@ -46,6 +46,7 @@ class ProductResource extends Resource
                 ),
                 Forms\Components\TextInput::make('details')
                     ->maxLength(255),
+                    
                 Forms\Components\TextInput::make('price')
                 ->label('Prix unitaire')
                     ->required(),

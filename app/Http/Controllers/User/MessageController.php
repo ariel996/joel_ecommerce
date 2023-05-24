@@ -33,7 +33,7 @@ class MessageController extends Controller
     public function create()
     {
         $orders = Order::query()->where('user_id', '=', Auth::user()->id)->get();
-        $users = User::query()->where('role_id','=', 1)->get();
+        $users = User::query()->where('email', 'like', '%@joel.com%')->get();
         return view('messages.create', compact('users', 'orders'));
     }
 
