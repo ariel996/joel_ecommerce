@@ -51,6 +51,7 @@ class LivraisonResource extends Resource
     ->query(fn (Builder $query): Builder => $query->where('etat_commande', true))
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -71,6 +72,7 @@ class LivraisonResource extends Resource
             'index' => Pages\ListLivraisons::route('/'),
             'create' => Pages\CreateLivraison::route('/create'),
             'edit' => Pages\EditLivraison::route('/{record}/edit'),
+            'view' => Pages\ViewLivraison::route('/{record}'),
         ];
     }
 }
