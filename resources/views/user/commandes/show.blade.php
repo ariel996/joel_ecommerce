@@ -1,18 +1,18 @@
 @extends('layouts.user')
-@section('title', 'Voire message')
+@section('title', 'Voire commande')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Voire message</h1>
+                        <h1 class="m-0">Voire commande</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('messages') }}">Messages</a></li>
-                            <li class="breadcrumb-item active">Voire message</li>
+                            <li class="breadcrumb-item"><a href="{{ route('commandes') }}">Commandes</a></li>
+                            <li class="breadcrumb-item active">Voire commande</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
