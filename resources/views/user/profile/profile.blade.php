@@ -1,18 +1,18 @@
 @extends('layouts.user')
-@section('title', 'Ajouter adresse')
+@section('title', 'Modifier profile')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Ajouter adresse</h1>
+                        <h1 class="m-0">Modifier profile</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('adresses') }}">Adresses</a></li>
-                            <li class="breadcrumb-item active">Ajouter adresse</li>
+                            <li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
+                            <li class="breadcrumb-item active">Modifier profile</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -26,33 +26,24 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="float-right">
-                                    <a href="{{ route('adresses') }}" class="btn btn-primary">Retour</a>
+                                    <a href="{{ route('profile') }}" class="btn btn-primary">Retour</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                <form action="{{ route('stock-adresse') }}" method="post">
+                                <form action="{{ route('post_change_profile') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Rue</label>
-                                        <input type="text" class="form-control" name="rue" required>
+                                        <label>Nom</label>
+                                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Code postal</label>
-                                        <input type="text" class="form-control" name="code" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Ville</label>
-                                        <input type="text" class="form-control" name="ville" required>
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Pays</label>
-                                        <input type="text" class="form-control" name="pays" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
                                     </div>
                                 </form>
                             </div>

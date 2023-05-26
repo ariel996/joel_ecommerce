@@ -35,7 +35,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label>Destinataire</label>
+                                        <label>Rue</label>
                                         <input type="text" class="form-control" value="{{ $adresse->rue }}" name="rue" required>
                                     </div>
                                     <div class="form-group">

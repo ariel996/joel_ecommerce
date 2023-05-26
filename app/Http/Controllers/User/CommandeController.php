@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Livraison;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,11 @@ class CommandeController extends Controller
     public function index()
     {
         $commandes = Order::query()
+        ->with('livraisons')
         ->where('user_id', Auth::user()->id)
-        ->where('shipped','=', 0)
+        //->where('shipped','=', 0)
         ->get();
+
         return view('user.commandes.index', compact('commandes'));
     }
 

@@ -140,6 +140,8 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
+            //\App\Filament\Widgets\StatOverview::class,
+            //\App\Filament\Widgets\LatestOrders::class,
             //Widgets\FilamentInfoWidget::class,
         ],
     ],

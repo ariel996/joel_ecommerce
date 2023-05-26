@@ -38,12 +38,10 @@ class LivraisonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('order.ref_id'),
+                Tables\Columns\TextColumn::make('order.user.name'),
                 Tables\Columns\IconColumn::make('etat_commande')->label('Livré')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
             ->filters([
@@ -51,7 +49,12 @@ class LivraisonResource extends Resource
     ->query(fn (Builder $query): Builder => $query->where('etat_commande', true))
             ])
             ->actions([
+                Tables\Actions\Action::make('livraison')->label('Valider')
+                    ->url(fn (Livraison $record): string  => route('valider_livraison', $record))
+                    ->requiresConfirmation(),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -71,6 +74,7 @@ class LivraisonResource extends Resource
             'index' => Pages\ListLivraisons::route('/'),
             'create' => Pages\CreateLivraison::route('/create'),
             'edit' => Pages\EditLivraison::route('/{record}/edit'),
+            'view' => Pages\ViewLivraison::route('/{record}'),
         ];
     }
 }

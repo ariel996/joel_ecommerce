@@ -33,6 +33,9 @@ class OrderResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\TextInput::make('ref_id')
+                    ->label('Référence commande')
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('billing_name')
                     ->required()
                     ->maxLength(255),
@@ -97,12 +100,16 @@ class OrderResource extends Resource
                     ->boolean(),
             ])
             ->filters([
-                Filter::make('shipped')->label('Livré')
+                Filter::make('shipped')->label('en Livraison')
                 ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 1)),
-                Filter::make('shipped2')->label('Non Livré')
+                Filter::make('shipped2')->label('Pas en Livraison')
                 ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 0)),
             ])
             ->actions([
+                Tables\Actions\Action::make('livraison')->label('Envoyer en livraison')
+                    ->url(fn (Order $record): string  => route('envoyer_livraison', $record))
+                    ->requiresConfirmation(),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -123,6 +130,7 @@ class OrderResource extends Resource
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'view' => Pages\ViewOrder::route('/{record}'),
         ];
     }
 }
