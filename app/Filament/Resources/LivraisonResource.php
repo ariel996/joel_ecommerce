@@ -49,6 +49,9 @@ class LivraisonResource extends Resource
     ->query(fn (Builder $query): Builder => $query->where('etat_commande', true))
             ])
             ->actions([
+                Tables\Actions\Action::make('livraison')->label('Valider')
+                    ->url(fn (Livraison $record): string  => route('valider_livraison', $record))
+                    ->requiresConfirmation(),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

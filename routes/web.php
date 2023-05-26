@@ -35,6 +35,7 @@ Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index
 Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store')->middleware('auth');
 Route::get('/guest-checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.guest');
 Route::get('/envoyer_livraison/{commande_id}', [\App\Http\Controllers\CheckoutController::class, 'envoyer_livraison'])->name('envoyer_livraison')->middleware('auth');
+Route::get('/valider_livraison/{livraison_id}', [\App\Http\Controllers\CheckoutController::class, 'valider_livraison'])->name('valider_livraison')->middleware('auth');
 
 // coupon
 Route::post('/coupon', [\App\Http\Controllers\CouponsController::class, 'store'])->name('coupon.store');

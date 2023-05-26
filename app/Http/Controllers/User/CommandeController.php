@@ -15,7 +15,7 @@ class CommandeController extends Controller
         $commandes = Order::query()
         ->with('livraisons')
         ->where('user_id', Auth::user()->id)
-        ->where('shipped','=', 0)
+        //->where('shipped','=', 0)
         ->get();
 
         return view('user.commandes.index', compact('commandes'));

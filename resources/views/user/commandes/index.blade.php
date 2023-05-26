@@ -52,12 +52,16 @@
                                         <td>{{ $commande->billing_total }}€</td>
                                         <td>
                                             @if ($commande->shipped == 0)
-                                                <span class="badge bg-warning">
+                                                <span class="badge bg-danger">
                                                     En attente
+                                                </span>
+                                                @elseif($commande->shipped == 1)
+                                                <span class="badge bg-success">
+                                                    Livré
                                                 </span>
                                                 @else
                                                 <span class="badge bg-warning">
-                                                    Livré
+                                                    En cours
                                                 </span>
                                             @endif
                                         </td>

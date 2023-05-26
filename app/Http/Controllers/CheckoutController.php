@@ -178,11 +178,23 @@ class CheckoutController extends Controller
 
     public function envoyer_livraison($commande_id)
     {
-        Livraison::query()->create([
-            'order_id' => $commande_id,
-            'etat_commande' => 0
+        $livraison = new Livraison();
+        $livraison->order_id = $commande_id;
+        $livraison->etat_commande = 0;
+        $livraison->save();
+        Order::where('id', '=',$commande_id)->update([
+            'shipped' => 2
         ]);
-        Order::query()->where('id', '=',$commande_id)->update([
+        return back();
+    }
+
+    public function valider_livraison($livraison_id)
+    {
+        Livraison::query()->where('id', '=', $livraison_id)->update([
+            'etat_commande' => 1
+        ]);
+        $livraison = Livraison::query()->findOrFail($livraison_id);
+        Order::query()->where('id', '=', $livraison->order_id)->update([
             'shipped' => 1
         ]);
         return back();
