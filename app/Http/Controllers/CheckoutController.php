@@ -10,7 +10,10 @@ use App\Models\OrderProduct;
 use Cartalyst\Stripe\Stripe;
 use Mail;
 use App\Mail\OrderPlaced;
+use App\Models\Adresse;
+use App\Models\Livraison;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
@@ -25,12 +28,14 @@ class CheckoutController extends Controller
             $newSubtotal = $subtotal - $discount > 0 ? $subtotal - $discount : 0;
             $tax = $newSubtotal * (config('cart.tax') / 100);
             $total = $tax + $newSubtotal;
+            $adresses = Adresse::query()->where('user_id', '=', Auth::user()->id)->get();
             return view('checkout')->with([
                 'subtotal' => $subtotal,
                 'discount' => $discount,
                 'newSubtotal' => $newSubtotal,
                 'total' => $total,
-                'tax' => $tax
+                'tax' => $tax,
+                'adresses' => $adresses
             ]);
         }
         return redirect()->route('cart.index')->withError('You have nothing in your cart , please add some products first');
@@ -60,15 +65,48 @@ class CheckoutController extends Controller
             //     ],
             // ]);
 
-            $order = $this->insertIntoOrdersTable($request, null);
+            $address = Adresse::query()->findOrFail($request->adresse_id);
+            $order = Order::create([
+                'user_id' => auth()->user() ? auth()->user()->id : null,
+                'ref_id' => Str::random(6),
+                'billing_email' => Auth::user()->email,
+                'billing_name' => Auth::user()->name,
+                'billing_address' => $address->rue,
+                'billing_city' => $address->ville,
+                'billing_province' => $address->pays,
+                'billing_postalcode' => $address->code,
+                'billing_phone' => $request->phone,
+                'billing_name_on_card' => $request->name_on_card,
+                'billing_discount' => $this->getNumbers()->get('discount'),
+                'billing_discount_code' => $this->getNumbers()->get('code'),
+                'billing_subtotal' => $this->getNumbers()->get('newSubtotal'),
+                'billing_tax' => $this->getNumbers()->get('newTax'),
+                'billing_total' => $this->getNumbers()->get('newTotal'),
+                'error' => ''
+            ]);
+
+            foreach (Cart::instance('default')->content() as $item) {
+                OrderProduct::create([
+                    'product_id' => $item->model->id,
+                    'order_id' => $order->id,
+                    'quantity' => $item->qty
+                ]);
+            }
 
             // SUCCESSFUL
             $this->decreaseQuantities();
             Mail::to($order->user->email)->send(new OrderPlaced($order));
             Cart::instance('default')->destroy();
             session()->forget('coupon');
+<<<<<<< HEAD
             return redirect()->route('welcome')->with('success', 'Your order is completed successfully!');
         } catch (\Exception $e) {
+=======
+
+            return redirect()->route('welcome')->with('success', 'Votre commande a été enregistrée avec succès!');
+        } catch (Exception $e) {
+
+>>>>>>> 7aa1ad0664662bfec27fe948e8b13b9dc19f3380
             $this->insertIntoOrdersTable($request, $e->getMessage());
             return back()->withError('Error ' . $e->getMessage());
         }
@@ -143,5 +181,29 @@ class CheckoutController extends Controller
             }
         }
         return false;
+    }
+
+    public function envoyer_livraison($commande_id)
+    {
+        $livraison = new Livraison();
+        $livraison->order_id = $commande_id;
+        $livraison->etat_commande = 0;
+        $livraison->save();
+        Order::where('id', '=',$commande_id)->update([
+            'shipped' => 2
+        ]);
+        return back();
+    }
+
+    public function valider_livraison($livraison_id)
+    {
+        Livraison::query()->where('id', '=', $livraison_id)->update([
+            'etat_commande' => 1
+        ]);
+        $livraison = Livraison::query()->findOrFail($livraison_id);
+        Order::query()->where('id', '=', $livraison->order_id)->update([
+            'shipped' => 1
+        ]);
+        return back();
     }
 }

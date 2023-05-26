@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ExpositionResource extends Resource
 {
     protected static ?string $model = Exposition::class;
-    protected static ?string $label = 'Exposition';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -26,6 +25,14 @@ class ExpositionResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nom')
                     ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('rue')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('code')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('ville')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('pays')
                     ->maxLength(255),
             ]);
     }
@@ -37,8 +44,10 @@ class ExpositionResource extends Resource
                 Tables\Columns\TextColumn::make('nom'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('rue'),
+                Tables\Columns\TextColumn::make('code'),
+                Tables\Columns\TextColumn::make('ville'),
+                Tables\Columns\TextColumn::make('pays'),
             ])
             ->filters([
                 //

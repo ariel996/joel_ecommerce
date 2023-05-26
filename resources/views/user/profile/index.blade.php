@@ -29,6 +29,7 @@
                                 <h3 class="card-title">Profile</h3>
                                 <div class="float-right">
                                     <a href="{{ route('update_password') }}" class="btn btn-primary">Modifier mot de passe</a>
+                                    <a href="{{ route('update_profile') }}" class="btn btn-primary">Modifier profil</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->

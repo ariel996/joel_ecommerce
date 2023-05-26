@@ -36,4 +36,19 @@ class ProfilController extends Controller
         }
         return redirect()->route('profile');
     }
+
+    public function change_profile()
+    {
+        return view('user.profile.profile');
+    }
+
+    public function post_change_profile(Request $request)
+    {
+        $user = User::query()->where('id', '=',Auth::user()->id)->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email')
+        ]);
+        Toastr::success('message', 'Profil mis à jour avec succès !!!');
+        return redirect()->route('profile');
+    }
 }

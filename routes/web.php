@@ -34,6 +34,8 @@ Route::patch('/cart/{product}', [\App\Http\Controllers\CartController::class, 'u
 Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.index')->middleware('auth');
 Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store')->middleware('auth');
 Route::get('/guest-checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.guest');
+Route::get('/envoyer_livraison/{commande_id}', [\App\Http\Controllers\CheckoutController::class, 'envoyer_livraison'])->name('envoyer_livraison')->middleware('auth');
+Route::get('/valider_livraison/{livraison_id}', [\App\Http\Controllers\CheckoutController::class, 'valider_livraison'])->name('valider_livraison')->middleware('auth');
 
 // coupon
 Route::post('/coupon', [\App\Http\Controllers\CouponsController::class, 'store'])->name('coupon.store');
@@ -74,5 +76,7 @@ Route::group(['middleware' => 'auth'], function() {
     // Profile
     Route::get('profil', [\App\Http\Controllers\User\ProfilController::class, 'profile'])->name('profile');
     Route::get('modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'change_password'])->name('update_password');
+    Route::get('modifier-profil', [\App\Http\Controllers\User\ProfilController::class, 'change_profile'])->name('update_profile');
+    Route::post('post-modifier-profil', [\App\Http\Controllers\User\ProfilController::class, 'post_change_profile'])->name('post_change_profile');
     Route::post('post-modifier-password', [\App\Http\Controllers\User\ProfilController::class, 'post_change_password'])->name('post_password');
 });
