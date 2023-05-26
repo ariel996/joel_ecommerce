@@ -38,12 +38,10 @@ class LivraisonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('order.ref_id'),
+                Tables\Columns\TextColumn::make('order.user.name'),
                 Tables\Columns\IconColumn::make('etat_commande')->label('Livré')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
             ->filters([
@@ -53,6 +51,7 @@ class LivraisonResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

@@ -12,46 +12,62 @@
             <h3 class="lead" style="font-size: 1.2em; margin-bottom: 1.6em;">Billing details</h3>
             <form action="{{ route('checkout.store') }}" method="POST">
                 @csrf()
-                <div class="form-group">
-                    <label for="email" class="light-text">Email Address</label>
-                    @guest
-                        <input type="text" name="email" class="form-control my-input" required>
-                    @else
-                        <input type="text" name="email" class="form-control my-input" value="{{ auth()->user()->email }}" readonly required>
-                    @endguest
-                </div>
-                <div class="form-group">
-                    <label for="name" class="light-text">nom</label>
-                    <input type="text" name="name" class="form-control my-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="address" class="light-text">Address</label>
-                    <input type="text" name="address" class="form-control my-input" required>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="city" class="light-text">ville</label>
-                            <input type="text" name="city" class="form-control my-input" required>
-                        </div>
+                @if ($adresses->count()>0)
+                    <div class="form-group">
+                        <label for="rue" class="light-text">Rue</label>
+                        <select name="adresse_id" id="adresse_id" class="form-control">
+                            @foreach ($adresses as $adresse)
+                                <option value="{{ $adresse->id }}">{{ $adresse->rue }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-md-6">
-                        <label for="province" class="light-text">commune</label>
-                        <input type="text" name="province" class="form-control my-input" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="postal_code" class="light-text">Code</label>
-                            <input type="text" name="postal_code" class="form-control my-input" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="form-group">
                         <label for="phone" class="light-text">Tel</label>
                         <input type="text" name="phone" class="form-control my-input" required>
                     </div>
-                </div>
+                @else
+                    <div class="form-group">
+                        <label for="email" class="light-text">Email Address</label>
+                        @guest
+                            <input type="text" name="email" class="form-control my-input" required>
+                        @else
+                            <input type="text" name="email" class="form-control my-input" value="{{ auth()->user()->email }}" readonly required>
+                        @endguest
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="light-text">nom</label>
+                        <input type="text" name="name" class="form-control my-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="light-text">Address</label>
+                        <input type="text" name="address" class="form-control my-input" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="city" class="light-text">ville</label>
+                                <input type="text" name="city" class="form-control my-input" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="province" class="light-text">commune</label>
+                            <input type="text" name="province" class="form-control my-input" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="postal_code" class="light-text">Code</label>
+                                <input type="text" name="postal_code" class="form-control my-input" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone" class="light-text">Tel</label>
+                            <input type="text" name="phone" class="form-control my-input" required>
+                        </div>
+                    </div>
+                @endif
+
                 <h2 style="margin-top:1em; margin-bottom:1em;">details de paiement</h2>
                 <div class="form-group">
                     <label for="name_on_card" class="light-text">nom sur la carte</label>
@@ -116,15 +132,6 @@
                     <span class="text-right" style="display: inline-block">{{ $total }}€</span>
                 </div>
             </div>
-            <hr>
-            @if (!session()->has('coupon'))
-                <form action="{{ route('coupon.store') }}" method="POST">
-                    @csrf()
-                    <label for="coupon_code">avez-vous un coupon ?</label>
-                    <input type="text" name="coupon_code" id="coupon" class="form-control my-input" placeholder="123456" required>
-                    <button type="submit" class="btn btn-success custom-border-success btn-block">valider Coupon</button>
-                </form>
-            @endif
         </div>
     </div>
 </div>

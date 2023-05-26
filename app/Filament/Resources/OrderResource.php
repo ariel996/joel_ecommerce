@@ -100,12 +100,15 @@ class OrderResource extends Resource
                     ->boolean(),
             ])
             ->filters([
-                Filter::make('shipped')->label('Livré')
+                Filter::make('shipped')->label('en Livraison')
                 ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 1)),
-                Filter::make('shipped2')->label('Non Livré')
+                Filter::make('shipped2')->label('Pas en Livraison')
                 ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 0)),
             ])
             ->actions([
+                Tables\Actions\Action::make('livraison')->label('Envoyer en livraison')
+                    ->url(fn (Order $record): string  => route('envoyer_livraison', $record))
+                    ->requiresConfirmation(),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])

@@ -51,14 +51,14 @@
                                         <td>{{ $commande->billing_address }}</td>
                                         <td>{{ $commande->billing_total }}€</td>
                                         <td>
-                                            @if($commande->shipped == 0)
-                                            <span class="badge bg-warning">
-                                                En attente
-                                            </span>
-                                            @else
-                                            <span class="badge bg-success">
-                                                Livré
-                                            </span>
+                                            @if ($commande->shipped == 0)
+                                                <span class="badge bg-warning">
+                                                    En attente
+                                                </span>
+                                                @else
+                                                <span class="badge bg-warning">
+                                                    Livré
+                                                </span>
                                             @endif
                                         </td>
                                         <td>
