@@ -98,8 +98,15 @@ class CheckoutController extends Controller
             Mail::to($order->user->email)->send(new OrderPlaced($order));
             Cart::instance('default')->destroy();
             session()->forget('coupon');
+<<<<<<< HEAD
             return redirect()->route('welcome')->with('success', 'Your order is completed successfully!');
         } catch (\Exception $e) {
+=======
+
+            return redirect()->route('welcome')->with('success', 'Votre commande a été enregistrée avec succès!');
+        } catch (Exception $e) {
+
+>>>>>>> 7aa1ad0664662bfec27fe948e8b13b9dc19f3380
             $this->insertIntoOrdersTable($request, $e->getMessage());
             return back()->withError('Error ' . $e->getMessage());
         }
