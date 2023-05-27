@@ -114,10 +114,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('profile') }}" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">
+                        <a href="{{ route('profile') }}" class="nav-link {{ Request::is('profil') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Profil
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('retour_produits') }}" class="nav-link {{ Request::is('retour-produit') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Retour produits
                             </p>
                         </a>
                     </li>

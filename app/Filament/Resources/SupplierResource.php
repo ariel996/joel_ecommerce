@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SupplierResource extends Resource
 {
     protected static ?string $model = Supplier::class;
-    protected static ?string $label = 'Fournisseurs';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -41,6 +40,14 @@ class SupplierResource extends Resource
                 Forms\Components\TextInput::make('num_bank')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('rue')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('code')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('ville')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('pays')
+                    ->maxLength(255),
             ]);
     }
 
@@ -53,10 +60,10 @@ class SupplierResource extends Resource
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('num_tel'),
                 Tables\Columns\TextColumn::make('num_bank'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('rue'),
+                Tables\Columns\TextColumn::make('code'),
+                Tables\Columns\TextColumn::make('ville'),
+                Tables\Columns\TextColumn::make('pays'),
             ])
             ->filters([
                 //

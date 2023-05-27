@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AvisController;
+use App\Http\Controllers\User\RetourProduitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('commandes', [\App\Http\Controllers\User\CommandeController::class, 'index'])->name('commandes');
     Route::get('voir_commande/{id}', [\App\Http\Controllers\User\CommandeController::class, 'show'])->name('voir_commande');
     Route::delete('delete-commande/{commande_id}', [\App\Http\Controllers\User\CommandeController::class, 'destroy'])->name('supprimer_commande');
+
+    // Retour produits routes
+    Route::get('retour-produit', [RetourProduitController::class, 'index'])->name('retour_produits');
+    Route::get('create-retour-produit', [RetourProduitController::class, 'create'])->name('create_retour_produits');
+    Route::get('edit-retour-produit/{id}', [RetourProduitController::class, 'edit'])->name('edit_retour_produits');
+    Route::post('post-create-retour-produit', [RetourProduitController::class, 'store'])->name('post_create_retour_produits');
+    Route::put('post-update-retour-produit/{id}', [RetourProduitController::class, 'update'])->name('post_update_retour_produits');
+    Route::delete('destroy-retour-produit/{id}', [RetourProduitController::class, 'destroy'])->name('delete_retour_produit');
+
+    Route::get('accepter/{id}', [RetourProduitController::class, 'accepter'])->name('accepter');
 
     // Messages
     Route::get('messages', [\App\Http\Controllers\User\MessageController::class, 'index'])->name('messages');

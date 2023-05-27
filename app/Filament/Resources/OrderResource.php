@@ -82,7 +82,7 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('Clients'),
-                Tables\Columns\TextColumn::make('ref_id')->label('Référence'),
+                Tables\Columns\TextColumn::make('ref_id')->searchable()->label('Référence'),
                 Tables\Columns\TextColumn::make('billing_name'),
                 Tables\Columns\TextColumn::make('billing_address'),
                 /*Tables\Columns\TextColumn::make('billing_city'),
@@ -98,7 +98,7 @@ class OrderResource extends Resource
                 //Tables\Columns\TextColumn::make('payment_gateway'),
                 Tables\Columns\IconColumn::make('shipped')->label('Etat livraison')
                     ->boolean(),
-            ])
+            ])->reorderable('created_at')
             ->filters([
                 Filter::make('shipped')->label('en Livraison')
                 ->query(fn (Builder $query): Builder => $query->where('shipped', '=', 1)),
@@ -107,7 +107,7 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('livraison')->label('Envoyer en livraison')
-                    ->url(fn (Order $record): string  => route('envoyer_livraison', $record))
+                    ->url(fn (Order $record): string  => route('envoyer_livraison', $record->id))
                     ->requiresConfirmation(),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
