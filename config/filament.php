@@ -106,6 +106,7 @@ return [
         'path' => app_path('Filament/Pages'),
         'register' => [
             Pages\Dashboard::class,
+            \RyanChandler\FilamentProfile\Pages\Profile::class
         ],
     ],
 
@@ -140,8 +141,7 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
-            //\App\Filament\Widgets\StatOverview::class,
-            //\App\Filament\Widgets\LatestOrders::class,
+            \Awcodes\Overlook\Overlook::class,
             //Widgets\FilamentInfoWidget::class,
         ],
     ],

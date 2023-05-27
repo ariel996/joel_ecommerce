@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class RetourProduitController extends Controller
 {
 
-    public function accepte($id)
+    public function accepter($id)
     {
         RetourProduit::query()->where('id', $id)->update([
             'accepted' => 1

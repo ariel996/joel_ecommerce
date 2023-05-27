@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "awcodes/overlook": "^1.1",
         "brian2694/laravel-toastr": "^5.57",
         "camya/filament-title-with-slug": "^0.5.6",
         "cartalyst/stripe-laravel": "^15.0",
@@ -18,7 +19,8 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "livewire/livewire": "^2.12",
-        "nicolaslopezj/searchable": "^1.13"
+        "nicolaslopezj/searchable": "^1.13",
+        "ryangjchandler/filament-profile": "^0.3.0"
     },
     "require-dev": {
         "doctrine/dbal": "^3.6",
