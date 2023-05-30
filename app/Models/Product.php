@@ -60,4 +60,8 @@ class Product extends Model
     {
         return $this->belongsTo(Exposition::class);
     }
+    public function livraisons(): HasMany
+    {
+        return $this->hasMany(Livraison::class);
+        }
 }
