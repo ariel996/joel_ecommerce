@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('stock-adresse', [\App\Http\Controllers\User\AdresseController::class, 'store'])->name('stock-adresse');
     Route::get('modifier-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'edit'])->name('modifier-adresse');
     Route::put('update-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'update'])->name('update-adresse');
-    Route::delete('delete-adresse', [\App\Http\Controllers\User\AdresseController::class, 'destroy'])->name('delete-adresse');
+    Route::delete('delete-adresse/{id}', [\App\Http\Controllers\User\AdresseController::class, 'destroy'])->name('delete-adresse');
 
     // Profile
     Route::get('profil', [\App\Http\Controllers\User\ProfilController::class, 'profile'])->name('profile');

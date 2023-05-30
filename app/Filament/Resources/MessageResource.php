@@ -12,6 +12,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\BulkAction;
+use Illuminate\Database\Eloquent\Collection;
 
 class MessageResource extends Resource
 {
@@ -38,12 +40,7 @@ class MessageResource extends Resource
                 Forms\Components\TextInput::make('objet')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\DatePicker::make('date')
-                    ->required(),
-                Forms\Components\TextInput::make('heure')
                     ->required(),
                 Forms\Components\Toggle::make('status')
                     ->required(),
@@ -58,15 +55,11 @@ class MessageResource extends Resource
                 Tables\Columns\TextColumn::make('destinataire_id'),
                 Tables\Columns\TextColumn::make('contenue'),
                 Tables\Columns\TextColumn::make('objet'),
-                Tables\Columns\TextColumn::make('type'),
                 Tables\Columns\TextColumn::make('date')
                     ->date(),
-                Tables\Columns\TextColumn::make('heure'),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
             ->filters([
@@ -74,6 +67,24 @@ class MessageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\CreateAction::make()->form([
+                    Forms\Components\Select::make('expediteur_id')
+                    ->label('Expéditeur')
+                    ->relationship('expediteur', 'name')
+                    ->required(),
+                Forms\Components\Select::make('destinataire_id')
+                    ->label('Destinataire')
+                    ->relationship('destinataire', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('objet')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('date')
+                    ->required(),
+                Forms\Components\RichEditor::make('contenue')
+                    ->required()
+                    ->maxLength(255),
+                ])->label('Répondre')
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
