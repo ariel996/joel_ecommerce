@@ -39,6 +39,7 @@ class LivraisonResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('order.user.name')->searchable(),
+                Tables\Columns\TextColumn::make('order.products.name'),
                 Tables\Columns\IconColumn::make('etat_commande')->label('Livré')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
