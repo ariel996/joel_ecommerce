@@ -83,12 +83,12 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('Clients'),
-                StackedImageColumn::make('products.image'),
+                StackedImageColumn::make('products.name'),
                 Tables\Columns\TextColumn::make('ref_id')->searchable()->label('Référence'),
                 Tables\Columns\TextColumn::make('billing_name'),
                 Tables\Columns\TextColumn::make('billing_address'),
 
-                Tables\Columns\TextColumn::make('billing_subtotal'),
+                //Tables\Columns\TextColumn::make('billing_subtotal'),
                 Tables\Columns\TextColumn::make('billing_total'),
                 Tables\Columns\IconColumn::make('shipped')->label('Etat livraison')
                     ->boolean(),
