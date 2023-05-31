@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "archilex/filament-stacked-image-column": "^1.0",
         "awcodes/overlook": "^1.1",
         "brian2694/laravel-toastr": "^5.57",
         "camya/filament-title-with-slug": "^0.5.6",
