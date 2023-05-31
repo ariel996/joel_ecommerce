@@ -37,7 +37,7 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>Reference commande</th>
+                                        <th>Code produit</th>
                                         <th>Etat produit</th>
                                         <th>Etat requête</th>
                                         <th style="width: 40px">Actions</th>
@@ -47,7 +47,7 @@
                                     @foreach($retour_produits as $key => $retour_produit)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $retour_produit->reference_commande }}</td>
+                                            <td>{{ $retour_produit->code_produit }}</td>
                                             <td>{{ $retour_produit->etat_produit }}</td>
                                             <td>
                                                 @if ($retour_produit->accepted == 0)

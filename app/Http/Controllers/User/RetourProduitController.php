@@ -32,7 +32,7 @@ class RetourProduitController extends Controller
     public function store(Request $request)
     {
         RetourProduit::query()->create([
-            'reference_commande' => $request->input('reference_commande'),
+            'code_produit' => $request->input('code_produit'),
             'etat_produit' => $request->input('etat_produit'),
             'accepted' => 0
         ]);
@@ -49,7 +49,7 @@ class RetourProduitController extends Controller
     public function update(Request $request, $id)
     {
         RetourProduit::query()->where('id', $id)->update([
-            'reference_commande' => $request->input('reference_commande'),
+            'code_produit' => $request->input('code_produit'),
             'etat_produit' => $request->input('etat_produit'),
         ]);
         Toastr::success('message', 'Vous avez mis à jour votre requête avec succès.');

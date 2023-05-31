@@ -24,9 +24,9 @@ class RetourProduitResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('reference_commande')
+                Forms\Components\TextInput::make('code_produit')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(10),
                 Forms\Components\Select::make('etat_produit')
                     ->options([
                         'Comme neuf' => 'Comme neuf',
@@ -42,8 +42,8 @@ class RetourProduitResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('reference_commande')
-                    ->label('Référence de la commande'),
+                Tables\Columns\TextColumn::make('code_produit')
+                    ->label('Code produit'),
                 Tables\Columns\TextColumn::make('etat_produit')
                     ->label('Etat du produit'),
                 Tables\Columns\IconColumn::make('accepted')

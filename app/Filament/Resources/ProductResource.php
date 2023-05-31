@@ -47,6 +47,9 @@ class ProductResource extends Resource
                 ),
                 Forms\Components\TextInput::make('details')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('code_produit')
+                    ->maxLength(10)
+                    ->required(),
 
                 Forms\Components\TextInput::make('price')
                 ->label('Prix unitaire')
@@ -75,6 +78,7 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('supplier.nom'),
+                Tables\Columns\TextColumn::make('code_produit')->label('Code Produit'),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('quantity'),

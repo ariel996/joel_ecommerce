@@ -35,8 +35,8 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label>Référence commande</label>
-                                        <input type="text" class="form-control" value="{{ $retour_porduit->reference_commande }}" name="reference_commande" required>
+                                        <label>Code produit</label>
+                                        <input type="text" class="form-control" value="{{ $retour_porduit->code_produit }}" maxlength="10" name="code_produit" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Etat produit</label>

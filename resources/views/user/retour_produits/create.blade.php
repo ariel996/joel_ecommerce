@@ -34,8 +34,8 @@
                                 <form action="{{ route('post_create_retour_produits') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Référence commande</label>
-                                        <input type="text" class="form-control" name="reference_commande" required>
+                                        <label>Code produit</label>
+                                        <input type="text" class="form-control" name="code_produit" maxlength="10" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Etat produit</label>
