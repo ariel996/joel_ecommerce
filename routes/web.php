@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::delete('destroy-retour-produit/{id}', [RetourProduitController::class, 'destroy'])->name('delete_retour_produit');
 
     Route::get('accepter/{id}', [RetourProduitController::class, 'accepter'])->name('accepter');
+    Route::get('lu/{id}', [RetourProduitController::class, 'lu'])->name('lu');
 
     // Messages
     Route::get('messages', [\App\Http\Controllers\User\MessageController::class, 'index'])->name('messages');

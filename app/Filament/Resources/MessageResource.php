@@ -66,7 +66,9 @@ class MessageResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('lu')->label('Lu')
+                    ->url(fn (Message $record): string  => route('lu', $record->id))
+                    ->requiresConfirmation(),
                 Tables\Actions\CreateAction::make()->form([
                     Forms\Components\Select::make('expediteur_id')
                     ->label('Expéditeur')

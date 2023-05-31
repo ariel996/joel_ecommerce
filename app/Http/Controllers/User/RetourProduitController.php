@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use App\Models\RetourProduit;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -13,6 +14,14 @@ class RetourProduitController extends Controller
     public function accepter($id)
     {
         RetourProduit::query()->where('id', $id)->update([
+            'status' => 1
+        ]);
+        return back();
+    }
+
+    public function lu($id)
+    {
+        Message::query()->where('id', $id)->update([
             'accepted' => 1
         ]);
         return back();
